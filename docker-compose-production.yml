@@ -1,0 +1,7 @@
+version: "3"
+services:
+  node-app:
+    environment:
+      - MODE_ENV=development
+    env_file:
+      - ./.env
