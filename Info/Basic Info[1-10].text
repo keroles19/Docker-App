@@ -1,0 +1,43 @@
+## ====================  Docker Information Practical ============================= ##
+------------------------------------------
+// --->  Basic Info  #0 - #10
+Create Dockerfile   [ node example ]
+ - From baseImage
+ - WORKDIR /app
+ - COPY package.json .    "." refer to /app
+ - RUN npm install
+ - COPY index.js .   or COPY . .
+ - EXPOSE 4000           ----> define app will open port 4000   [just for documentation need extra step in next ]
+ - CMD ["npm" , "start" ]
+
++ To Build docker & Docker command
+ - docker build -t name-app .
+ - docker image ls  -> list all images
+ - docker run --name name-app-container -dp 4000:4000  name-app    -->   to create container from image
+ - docker ps        -> show all running container
+ - docker stop name-app-container  -> to stop
+ - docker rm  name-app-container -f -> remove old container
+
+--- Definitions
+- Image :
+     "template that contains everything needed to run an application. This includes the application's code,
+     runtime, system tools, system libraries, and settings. Docker images are designed to be built and shared so
+     that anyone can use them to run any application on any infrastructure."
+
+    "A Docker image is a file used to execute code in a Docker container.
+     Docker images act as a set of instructions to build a Docker container, like a template.
+     Docker images also act as the starting point when using Docker"
+
+ - Container :
+     " a container is a sandboxes process on your machine that is isolated from all other processes on the host machine. "
+      Is a runnable instance of an image. You can create, start, stop, move, or delete a container using the DockerAPI or CLI.
+      Can be run on local machines, virtual machines or deployed to the cloud.
+      Is portable (can be run on any OS).
+      Is isolated from other containers and runs its own software, binaries, and configurations.
+
+---  Docker Optimization
+   - docker exec -it container-name bash     --> execute bash with interactive terminal
+   + [.dockerignore file ]  use it like  .gitignore
+
+--- Local Development and Hot-reload
+
