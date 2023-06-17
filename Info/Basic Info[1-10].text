@@ -40,4 +40,7 @@ Create Dockerfile   [ node example ]
    + [.dockerignore file ]  use it like  .gitignore
 
 --- Local Development and Hot-reload
+ -docker logs container_name   --> To See container Logs
+ - docker run --name container_name  -dp 4000:4000 -v absolute_dir:container dir  image_name
+    - v -> is volumes   used for making syncing between development dir and container
 
