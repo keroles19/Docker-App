@@ -42,3 +42,10 @@
    context: .
    target : development
  --------------------------------------------------------------
+ to show all details about container
+ - docker inspect container-name
+
+ mongo db will link default network dynamically
+ service name will link network ip dynamically
+ to show all networks use      -->  docker network ls
+ to show all detail's network  -->  docker network inspect network_name
