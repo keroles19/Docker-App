@@ -1,0 +1,44 @@
+## ====================  Docker Information Practical ============================= ##
+------------------------------------------
+// --->  Docker Composer  #11 - #20
+--> docker compose environment
+ --> best bracts is creating  environment compose docker file like
+  (docker-dev.yml and docker-prod.yml and  docker-compose.yml for common)
+ - docker composer -f docker-compose.yml -f docker-composer-dev.yml up -d       ---> up docker
+ - docker composer -f docker-compose.yml -f docker-composer-dev.yml down        ---> down docker
+ - docker composer -f docker-compose.yml -f docker-composer-dev.yml up -d  --build      --> build image then run container
+
+
+--> docker stage
+ - single stage with checks & arguments    --------------------------------------------------------
+  ARG NODE_ENV
+  RUN if ["$NODE_ENV" = "production"]; \                  \ -> to break line without error
+      then npm install --only=production; \
+      else npm install; \
+      fi
+
+ to send argument from compose file to docker file  type :
+   build:
+    context: .
+    args:
+     - NODE_ENV=development
+
+     ----------------------------------------------------------------------------
+   - multi stage environment
+    at docker file
+    From node as base
+     .....
+     ..... common
+     ....
+    From base as development
+    .....
+    .....
+    From base as production
+    .....
+    .....
+ then    =====================
+ Pass Target from  docker composer to docker file
+  build:
+   context: .
+   target : development
+ --------------------------------------------------------------

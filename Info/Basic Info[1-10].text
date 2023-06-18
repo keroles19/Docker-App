@@ -41,6 +41,44 @@ Create Dockerfile   [ node example ]
 
 --- Local Development and Hot-reload
  -docker logs container_name   --> To See container Logs
- - docker run --name container_name  -dp 4000:4000 -v absolute_dir:container dir  image_name
+ - docker run --name container_name  -dp 4000:4000 -v $(pwd):/app  image_name
     - v -> is volumes   used for making syncing between development dir and container
+
+ Volumed Type
+ 1- bind Mount : like two way binds     -v $(pwd):/app
+ 2- read-only bind mount :    one way bind
+    For some development applications, the container needs to write into the bind mount, so changes are propagated back to the Docker host. At other times, the container only needs read access.
+   -v $(pwd):/app:ro    ---> Read Only   can't access for any change after mounted on container
+
+   anything will sync at container
+
+ 3- anonymous Mount  :
+    specific files to prevent access to them
+  -v $(pwd):/app:ro -v /app/node_modules               -> prevent access to node_modules folder
+
+  Best Mount Used   [ Bind Only Files will need listen them ]
+  docker run --name container_name -dp 4000:4000  -v $(pwd)/src:/app/src:ro    image_name
+
+---- Docker Compose
+    - Utility getting by docker using for professional manage my containers
+
+steps for create basic docker-compose file
+- create docker-compose.yml
+  add these lines to created file
+ versions : "3"         --> docker compose version
+ services :
+   node-app:            --> service name
+     container_name : express-node-container
+     build : .           -->  docker file witch build image
+     volumes:
+     - ./src:/app/src:ro
+     ports:
+     -  "4000:4000"
+     environments:                           |or make
+      - PORT=4000                            | env-file
+      - NODE_ENV=production                  |   - ./.env
+
+To Run compos File
+  docker-compose up -d   -> run
+  docker-compose down    -> stop
 
