@@ -49,3 +49,23 @@
  service name will link network ip dynamically
  to show all networks use      -->  docker network ls
  to show all detail's network  -->  docker network inspect network_name
+
+- docker vlumns purne  ---> To remove all unused volumns 
+
+------ docker with monogo express 
+- to store database at my drive use   (anonymous volumns)
+
+create at docker-compose
+  
+ -mongo: 
+   volumns:
+     mongo-db:/data/db                            --> anonymous volumns
+
+-volumns :
+  mongo-db;
+
+-- ## 15
+  use -------|
+
+ -  depends_on:                ---> use to reorder build containers
+         - mongo
