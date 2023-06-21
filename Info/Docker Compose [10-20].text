@@ -50,18 +50,18 @@
  to show all networks use      -->  docker network ls
  to show all detail's network  -->  docker network inspect network_name
 
-- docker vlumns purne  ---> To remove all unused volumns 
+- docker volumes purne  ---> To remove all unused volumes
 
------- docker with monogo express 
-- to store database at my drive use   (anonymous volumns)
+------ docker with mongo express
+- to store database at my drive use   (anonymous volumes)
 
 create at docker-compose
   
  -mongo: 
-   volumns:
-     mongo-db:/data/db                            --> anonymous volumns
+   volumes:
+     mongo-db:/data/db                            --> anonymous volumes
 
--volumns :
+-volumes :
   mongo-db;
 
 -- ## 15
