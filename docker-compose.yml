@@ -17,6 +17,17 @@ services:
     depends_on:
       - node-app
 
+
+  # postgres:
+  #     image: postgres
+  #     restart: always
+  #     volumes:
+  #     - postgres-db:/var/lib/postgresql/data
+  #     environment:
+  #       MONGO_INITDB_ROOT_USERNAME: root
+  #       MONGO_INITDB_ROOT_PASSWORD: example  
+
+
   mongo:
     image: mongo
     restart: always
@@ -45,3 +56,4 @@ services:
 
 volumes:
  mongo-db:
+ postgres-db:
