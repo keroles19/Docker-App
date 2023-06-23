@@ -69,3 +69,10 @@ create at docker-compose
 
  -  depends_on:                ---> use to reorder build containers
          - mongo
+
+
+---> to use docker with laravel --- use laravel sail to run docker out of the box
+
+##  How to Setup Password Authentication For AWS ec2 Instances
+https://comtechies.com/password-authentication-aws-ec2.html
+## https://support.netfoundry.io/hc/en-us/articles/360057865692-Installing-Docker-and-docker-compose-for-Ubuntu-20-04
