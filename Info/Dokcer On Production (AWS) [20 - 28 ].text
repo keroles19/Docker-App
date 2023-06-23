@@ -1,0 +1,20 @@
+## ====================  Docker On Production ============================= ##
+-----------------------------------------
+-- ## To avoid build image on aws after adding new feature
+ 1- Amazon ECR
+   - build images then push build image on local then push new image on ECR then on server
+      pull image and run container
+   ECR ---> Place that contain Images
+
+ 2- Docker Hub :
+   - create your image on docker hub
+   - add
+       - image : dockerHubImage      flag on service
+   - docker login  --> then add credential
+   - docker compose -f docker-compose.yml -f docker-compose.prod.yml build
+   - docker compose -f docker-compose.yml -f docker-compose.prod.yml push service-name
+   then go to server
+   - docker compose -f docker-compose.yml -f docker-compose.prod.yml pull
+      or  pull only service
+   - docker compose -f docker-compose.yml -f docker-compose.prod.yml pull service_name
+
