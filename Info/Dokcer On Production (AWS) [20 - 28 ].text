@@ -18,3 +18,5 @@
       or  pull only service
    - docker compose -f docker-compose.yml -f docker-compose.prod.yml pull service_name
 
+--##  Load Balancer on nginx development
+-  docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build --scale service_name=3
