@@ -1,0 +1,54 @@
+## ====================  Docker Orchestration ============================= ##
+-----------------------------------------
+ - Docker orchestration :
+   - Management Layer above docker container
+   - Containerization provides an opportunity to move and scale applications to clouds and data centers.
+     Containers effectively guarantee that those applications run the same way anywhere,
+     allowing us to quickly and easily take advantage of all these environments.
+     Additionally, as we scale our applications up, we need some tooling to help automate the maintenance of those applications,
+     enable the replacement of failed containers automatically, and manage the roll-out of updates and reconfigurations of those containers during their lifecycle.
+
+
+ - Benefits  :-
+     - Easy Deploy
+     - profession scaling
+     - networking between services
+     - Handle Errors
+     - easy logic when add new feature or update
+  -- Two Orchestration
+     - Kubernetes
+     - Docker Swarm
+ -----------------------------------------
+  - ## Docker Swarm
+  -- basic unit  --> nodes -> put my contrarians at node
+   nodes type
+    1- manage node :- responsible for managing worker node
+    2- worker node
+    if need make node --> must create stack
+
+  To Active swarm docker
+  https://docs.docker.com/get-started/orchestration/
+
+  add docker swarm to your docker compose file
+
+  version: "3.8"
+  services:
+    redis:
+      image: redis:alpine
+      --------------------------|
+      deploy:
+        replicas: 4
+        placement:
+          max_replicas_per_node: 1
+        update_config:
+          parallelism: 2
+          delay: 10s
+        restart_policy:
+          condition: on-failure
+           delay: 5s
+      --------------------------|
+      -- run
+      docker stack deploy -c docker-compose-file.yaml stack_name
+      docker service ls
+      docker stack service  stack_name
+      docker stack rm stack_name    -> remove stack
